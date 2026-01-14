@@ -157,7 +157,8 @@ const MouseGlow = () => {
         }}
       />
     </div>
-  );</n};
+  );
+};</n};
 
 // --- Productos Section Component ---
 const ProductosSection = () => {
