@@ -14,6 +14,7 @@ export default function Header() {
     { path: '/servicios', label: 'Servicios' },
     { path: '/ubicacion', label: 'Ubicación' },
     { path: '/contacto', label: 'Contacto' },
+    { path: '/productos', label: 'Productos' },
   ];
 
   return (
