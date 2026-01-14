@@ -338,11 +338,11 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <AnimatedReveal direction="left" className="relative">
               <div className="relative rounded-[3rem] overflow-hidden aspect-square bg-gray-100">
-                 {/* Team photo with pets and owners */}
+                 {/* Family photo with pets and owners */}
                  <div className="absolute inset-0">
                     <Image 
-                      src="https://static.wixstatic.com/media/773a78_1caecdec808b4f92a878321c6577e282~mv2.png" 
-                      alt="Equipo Milicotas con mascotas y sus dueños" 
+                      src="https://static.wixstatic.com/media/773a78_9e0a156fb79d4f34a113c5246022182f~mv2.png" 
+                      alt="Familia Milicotas con mascotas y sus dueños" 
                       width={600}
                       className="w-full h-full object-cover"
                     />
@@ -354,14 +354,9 @@ export default function HomePage() {
 
             <div className="flex flex-col gap-8">
               <AnimatedReveal>
-                <div className="mb-6">
-                  <Image 
-                    src="https://static.wixstatic.com/media/773a78_9e0a156fb79d4f34a113c5246022182f~mv2.png" 
-                    alt="Más que una veterinaria, somos familia" 
-                    width={600}
-                    className="w-full max-w-md"
-                  />
-                </div>
+                <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-6">
+                  Más que una veterinaria, somos familia.
+                </h2>
               </AnimatedReveal>
               
               <AnimatedReveal delay={100}>
