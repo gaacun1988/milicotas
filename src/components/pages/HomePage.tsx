@@ -3,13 +3,36 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useSpring, useMotionValue, useMotionTemplate } from 'framer-motion';
 import { Image } from '@/components/ui/image';
-import { Heart, Award, Clock, Users, MapPin, ArrowRight, Phone, Calendar, Star } from 'lucide-react';
+import { Heart, Award, Clock, Users, MapPin, ArrowRight, Phone, Calendar, Star, MessageCircle } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { BaseCrudService } from '@/integrations';
-import { ServiciosVeterinarios } from '@/entities';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+
+// --- Types ---
+interface ServiciosVeterinarios {
+  _id: string;
+  _createdDate?: Date;
+  _updatedDate?: Date;
+  serviceName?: string;
+  description?: string;
+  serviceImage?: string;
+  price?: number;
+  benefits?: string;
+  duration?: string;
+}
+
+interface ProductosVeterinarios {
+  _id: string;
+  _createdDate?: Date;
+  _updatedDate?: Date;
+  productName?: string;
+  description?: string;
+  productImage?: string;
+  price?: number;
+  whatsappLink?: string;
+}
 
 // --- Utility Components for "Living" Experience ---
 
@@ -133,6 +156,84 @@ const MouseGlow = () => {
           `,
         }}
       />
+    </div>
+  );</n};
+
+// --- Productos Section Component ---
+const ProductosSection = () => {
+  const [productos, setProductos] = useState<ProductosVeterinarios[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadProductos = async () => {
+      const { items } = await BaseCrudService.getAll<ProductosVeterinarios>('productosveterinarios');
+      setProductos(items);
+      setLoading(false);
+    };
+    loadProductos();
+  }, []);
+
+  const getWhatsAppLink = (productName: string) => {
+    const message = encodeURIComponent(`Hola, quiero consultar por el producto ${productName}`);
+    return `https://wa.me/5491147834584?text=${message}`;
+  };
+
+  return (
+    <div className="min-h-[400px]">
+      {loading ? null : productos.length === 0 ? (
+        <div className="text-center py-20">
+          <p className="font-paragraph text-xl text-foreground/60">
+            Próximamente agregaremos productos
+          </p>
+        </div>
+      ) : (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {productos.map((producto, index) => (
+            <AnimatedReveal key={producto._id} delay={index * 100}>
+              <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all h-full flex flex-col">
+                {producto.productImage && (
+                  <div className="relative h-64 overflow-hidden">
+                    <Image
+                      src={producto.productImage}
+                      alt={producto.productName || 'Producto'}
+                      width={500}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+                
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="font-heading text-2xl font-bold text-foreground mb-3">
+                    {producto.productName}
+                  </h3>
+                  
+                  <p className="font-paragraph text-base text-foreground/70 mb-4 flex-grow">
+                    {producto.description}
+                  </p>
+
+                  {producto.price && (
+                    <div className="mb-4">
+                      <span className="font-heading text-2xl font-bold text-primary">
+                        ${producto.price}
+                      </span>
+                    </div>
+                  )}
+
+                  <a
+                    href={getWhatsAppLink(producto.productName || 'este producto')}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all"
+                  >
+                    <MessageCircle size={20} />
+                    Consultar por WhatsApp
+                  </a>
+                </div>
+              </div>
+            </AnimatedReveal>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
@@ -502,6 +603,24 @@ export default function HomePage() {
           </div>
         </section>
       )}
+
+      {/* --- PRODUCTOS SECTION --- */}
+      <section className="w-full py-32 bg-background overflow-hidden">
+        <div className="container max-w-[120rem] mx-auto px-6">
+          <div className="text-center mb-16">
+            <AnimatedReveal>
+              <h2 className="font-heading text-4xl md:text-6xl font-bold text-foreground mb-6">
+                Productos Veterinarios
+              </h2>
+              <p className="font-paragraph text-xl text-foreground/70 max-w-3xl mx-auto">
+                Encuentra todo lo que necesitas para el cuidado de tu mascota
+              </p>
+            </AnimatedReveal>
+          </div>
+
+          <ProductosSection />
+        </div>
+      </section>
 
       {/* --- LOCATION & MAP TEASER --- */}
       <section className="w-full py-24 bg-background relative overflow-hidden">
