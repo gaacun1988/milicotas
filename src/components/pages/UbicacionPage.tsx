@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Image } from '@/components/ui/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { MapPin, Clock, Phone, Navigation } from 'lucide-react';
@@ -9,8 +10,16 @@ export default function UbicacionPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="w-full bg-gradient-to-br from-primary to-logo-accent2 py-20">
-        <div className="max-w-[100rem] mx-auto px-6">
+      <section className="w-full bg-gradient-to-br from-primary to-logo-accent2 py-20 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <Image 
+            src="https://static.wixstatic.com/media/773a78_a33421450bf24c498c72a11eb28b145d~mv2.png" 
+            alt="Background" 
+            width={1600}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="max-w-[100rem] mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -146,6 +155,113 @@ export default function UbicacionPage() {
                   Contactar Ahora
                 </a>
               </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Photo Gallery Section */}
+      <section className="w-full py-20 bg-white">
+        <div className="max-w-[100rem] mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Nuestras Instalaciones
+            </h2>
+            <p className="font-paragraph text-xl text-foreground max-w-3xl mx-auto">
+              Conoce nuestro espacio diseñado para el bienestar de tus mascotas
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="rounded-2xl overflow-hidden shadow-lg"
+            >
+              <Image 
+                src="https://static.wixstatic.com/media/773a78_c48a3a9c68a145b4b9b46827cc4926f8~mv2.png" 
+                alt="Interior tienda" 
+                width={500}
+                className="w-full h-64 object-cover hover:scale-110 transition-transform duration-500"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="rounded-2xl overflow-hidden shadow-lg"
+            >
+              <Image 
+                src="https://static.wixstatic.com/media/773a78_f21f4e730e7145c091d8721587463486~mv2.png" 
+                alt="Pasillo clínica" 
+                width={500}
+                className="w-full h-64 object-cover hover:scale-110 transition-transform duration-500"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="rounded-2xl overflow-hidden shadow-lg"
+            >
+              <Image 
+                src="https://static.wixstatic.com/media/773a78_25ca6a7b1fd5447c85cb881a6f2f2c2b~mv2.png" 
+                alt="Veterinaria con mascota" 
+                width={500}
+                className="w-full h-64 object-cover hover:scale-110 transition-transform duration-500"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="rounded-2xl overflow-hidden shadow-lg"
+            >
+              <Image 
+                src="https://static.wixstatic.com/media/773a78_dcfef254e7ce48e9bbfdfbacf850aa0e~mv2.png" 
+                alt="Productos veterinarios" 
+                width={500}
+                className="w-full h-64 object-cover hover:scale-110 transition-transform duration-500"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="rounded-2xl overflow-hidden shadow-lg"
+            >
+              <Image 
+                src="https://static.wixstatic.com/media/773a78_b0321542a4614a16b55ec0add6671e99~mv2.png" 
+                alt="Interior pet shop" 
+                width={500}
+                className="w-full h-64 object-cover hover:scale-110 transition-transform duration-500"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="rounded-2xl overflow-hidden shadow-lg"
+            >
+              <Image 
+                src="https://static.wixstatic.com/media/773a78_c0175e8a96ff4938975786ccf27fa72d~mv2.png" 
+                alt="Fachada Milicotas" 
+                width={500}
+                className="w-full h-64 object-cover hover:scale-110 transition-transform duration-500"
+              />
             </motion.div>
           </div>
         </div>

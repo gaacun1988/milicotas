@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Image } from '@/components/ui/image';
 
 export default function ContactoPage() {
   const [formData, setFormData] = useState({
@@ -52,8 +53,11 @@ export default function ContactoPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="w-full bg-gradient-to-br from-primary to-logo-accent2 py-20">
-        <div className="max-w-[100rem] mx-auto px-6">
+      <section className="w-full bg-gradient-to-br from-primary to-logo-accent2 py-20 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <Image src="https://static.wixstatic.com/media/773a78_4cacbcc7623448e2bae3c46981da9d02~mv2.png" alt="Background" className="w-full h-full object-cover" />
+        </div>
+        <div className="max-w-[100rem] mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}

@@ -262,7 +262,7 @@ export default function HomePage() {
               {/* Main Background Image (Facade) - Parallax Layer 1 */}
               <div className="absolute top-10 right-0 w-[85%] h-[90%] rounded-[3rem] overflow-hidden shadow-2xl rotate-3 border-8 border-white z-10">
                 <ParallaxImage 
-                  src="https://static.wixstatic.com/media/773a78_7344dcdb10114904ae236b18dd943e1b~mv2.png?id=hero-facade" 
+                  src="https://static.wixstatic.com/media/773a78_a33421450bf24c498c72a11eb28b145d~mv2.png" 
                   alt="Milicotas Fachada" 
                   className="w-full h-full"
                   speed={0.2}
@@ -278,7 +278,7 @@ export default function HomePage() {
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 <Image 
-                  src="https://static.wixstatic.com/media/773a78_679cee6a2a584fce92b22cf4de2ce83d~mv2.png?id=hero-dog" 
+                  src="https://static.wixstatic.com/media/773a78_62b4685ef87542bb91fb8f701cfbe6a4~mv2.png" 
                   alt="Mascota feliz" 
                   width={500}
                   className="w-full h-full object-cover"
@@ -338,13 +338,13 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <AnimatedReveal direction="left" className="relative">
               <div className="relative rounded-[3rem] overflow-hidden aspect-square bg-gray-100">
-                 {/* Using the Logo/Brand Image here as a feature */}
-                 <div className="absolute inset-0 p-12 flex items-center justify-center bg-white">
+                 {/* Interior store image */}
+                 <div className="absolute inset-0">
                     <Image 
-                      src="https://static.wixstatic.com/media/773a78_e14d50bae37446aba21f313153928516~mv2.png?id=brand-logo-large" 
-                      alt="Milicotas Logo" 
+                      src="https://static.wixstatic.com/media/773a78_b0321542a4614a16b55ec0add6671e99~mv2.png" 
+                      alt="Interior Milicotas" 
                       width={600}
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-cover"
                     />
                  </div>
                  {/* Decorative circle */}
@@ -558,7 +558,7 @@ export default function HomePage() {
               {/* Image/Map Visual */}
               <div className="relative h-[400px] lg:h-auto min-h-full bg-gray-200">
                  <Image 
-                   src="https://static.wixstatic.com/media/773a78_7344dcdb10114904ae236b18dd943e1b~mv2.png?id=location-facade" 
+                   src="https://static.wixstatic.com/media/773a78_c0175e8a96ff4938975786ccf27fa72d~mv2.png" 
                    alt="Fachada Milicotas" 
                    width={800}
                    className="absolute inset-0 w-full h-full object-cover"

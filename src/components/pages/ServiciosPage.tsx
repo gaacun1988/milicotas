@@ -37,8 +37,16 @@ export default function ServiciosPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="w-full bg-gradient-to-br from-primary to-logo-accent2 py-20">
-        <div className="max-w-[100rem] mx-auto px-6">
+      <section className="w-full bg-gradient-to-br from-primary to-logo-accent2 py-20 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <Image 
+            src="https://static.wixstatic.com/media/773a78_b0321542a4614a16b55ec0add6671e99~mv2.png" 
+            alt="Background" 
+            width={1600}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="max-w-[100rem] mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -135,6 +143,71 @@ export default function ServiciosPage() {
               ))}
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section className="w-full bg-background py-20">
+        <div className="max-w-[100rem] mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Nuestro Equipo y Clientes Felices
+            </h2>
+            <p className="font-paragraph text-xl text-foreground max-w-3xl mx-auto">
+              Conoce a nuestro equipo profesional y a las mascotas que confían en nosotros
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="rounded-2xl overflow-hidden shadow-lg"
+            >
+              <Image 
+                src="https://static.wixstatic.com/media/773a78_4cacbcc7623448e2bae3c46981da9d02~mv2.png" 
+                alt="Equipo Milicotas" 
+                width={500}
+                className="w-full h-80 object-cover"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="rounded-2xl overflow-hidden shadow-lg"
+            >
+              <Image 
+                src="https://static.wixstatic.com/media/773a78_51abcbb6c44347feacad883f344451df~mv2.png" 
+                alt="Veterinario con mascotas" 
+                width={500}
+                className="w-full h-80 object-cover"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="rounded-2xl overflow-hidden shadow-lg"
+            >
+              <Image 
+                src="https://static.wixstatic.com/media/773a78_b6f65c8d11bd47d3bd0d6656507f8887~mv2.png" 
+                alt="Peluquería canina" 
+                width={500}
+                className="w-full h-80 object-cover"
+              />
+            </motion.div>
+          </div>
         </div>
       </section>
 
