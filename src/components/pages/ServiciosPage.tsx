@@ -4,19 +4,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useEffect, useState } from 'react';
 import { BaseCrudService } from '@/integrations';
-import { Clock, DollarSign, CheckCircle, MessageCircle, AlertCircle } from 'lucide-react';
-
-interface ServiciosVeterinarios {
-  _id: string;
-  _createdDate?: Date;
-  _updatedDate?: Date;
-  serviceName?: string;
-  description?: string;
-  serviceImage?: string;
-  price?: number;
-  benefits?: string;
-  duration?: string;
-}
+import { ServiciosVeterinarios } from '@/entities';
+import { Clock, DollarSign, CheckCircle } from 'lucide-react';
 
 export default function ServiciosPage() {
   const [services, setServices] = useState<ServiciosVeterinarios[]>([]);
@@ -85,108 +74,73 @@ export default function ServiciosPage() {
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service, index) => {
-                const isPeluqueria = service.serviceName?.toLowerCase().includes('peluquería') || 
-                                     service.serviceName?.toLowerCase().includes('peluqueria');
-                
-                return (
-                  <motion.div
-                    key={service._id}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all"
-                  >
-                    {service.serviceImage && (
-                      <div className="relative h-64 overflow-hidden">
-                        <Image
-                          src={service.serviceImage}
-                          alt={service.serviceName || 'Servicio veterinario'}
-                          width={500}
-                          className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                        />
+              {services.map((service, index) => (
+                <motion.div
+                  key={service._id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all"
+                >
+                  {service.serviceImage && (
+                    <div className="relative h-64 overflow-hidden">
+                      <Image
+                        src={service.serviceImage}
+                        alt={service.serviceName || 'Servicio veterinario'}
+                        width={500}
+                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                      />
+                    </div>
+                  )}
+                  
+                  <div className="p-6">
+                    <h3 className="font-heading text-2xl font-bold text-foreground mb-4">
+                      {service.serviceName}
+                    </h3>
+                    
+                    <p className="font-paragraph text-base text-foreground mb-6">
+                      {service.description}
+                    </p>
+
+                    {service.benefits && (
+                      <div className="mb-6">
+                        <div className="flex items-start gap-2 mb-2">
+                          <CheckCircle className="text-primary flex-shrink-0 mt-1" size={20} />
+                          <div>
+                            <h4 className="font-heading text-sm font-semibold text-foreground mb-1">
+                              Beneficios
+                            </h4>
+                            <p className="font-paragraph text-sm text-foreground">
+                              {service.benefits}
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     )}
-                    
-                    <div className="p-6">
-                      <h3 className="font-heading text-2xl font-bold text-foreground mb-4">
-                        {service.serviceName}
-                      </h3>
 
-                      {isPeluqueria && (
-                        <div className="mb-6 p-4 bg-secondary/10 border-l-4 border-secondary rounded-r-lg">
-                          <div className="flex items-start gap-3">
-                            <AlertCircle className="text-secondary flex-shrink-0 mt-1" size={20} />
-                            <div>
-                              <p className="font-paragraph text-sm font-semibold text-foreground mb-1">
-                                Peluquería veterinaria – Próximamente en nueva dirección
-                              </p>
-                              <p className="font-paragraph text-sm text-foreground/80">
-                                Consultar por WhatsApp para coordinar turnos
-                              </p>
-                            </div>
-                          </div>
+                    <div className="flex flex-wrap gap-4 items-center justify-between pt-4 border-t border-gray-200">
+                      {service.duration && (
+                        <div className="flex items-center gap-2">
+                          <Clock className="text-primary" size={20} />
+                          <span className="font-paragraph text-sm text-foreground">
+                            {service.duration}
+                          </span>
                         </div>
                       )}
                       
-                      <p className="font-paragraph text-base text-foreground mb-6">
-                        {service.description}
-                      </p>
-
-                      {service.benefits && (
-                        <div className="mb-6">
-                          <div className="flex items-start gap-2 mb-2">
-                            <CheckCircle className="text-primary flex-shrink-0 mt-1" size={20} />
-                            <div>
-                              <h4 className="font-heading text-sm font-semibold text-foreground mb-1">
-                                Beneficios
-                              </h4>
-                              <p className="font-paragraph text-sm text-foreground">
-                                {service.benefits}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      <div className="flex flex-wrap gap-4 items-center justify-between pt-4 border-t border-gray-200">
-                        {service.duration && (
-                          <div className="flex items-center gap-2">
-                            <Clock className="text-primary" size={20} />
-                            <span className="font-paragraph text-sm text-foreground">
-                              {service.duration}
-                            </span>
-                          </div>
-                        )}
-                        
-                        {service.price && (
-                          <div className="flex items-center gap-2">
-                            <DollarSign className="text-primary" size={20} />
-                            <span className="font-heading text-xl font-bold text-primary">
-                              ${service.price}
-                            </span>
-                          </div>
-                        )}
-                      </div>
-
-                      {isPeluqueria && (
-                        <div className="mt-6">
-                          <a
-                            href="https://wa.me/5491147834584?text=Hola,%20quiero%20consultar%20turno%20de%20peluquer%C3%ADa"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center gap-2 w-full h-12 px-6 rounded-full bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all"
-                          >
-                            <MessageCircle size={20} />
-                            Consultar turno de peluquería
-                          </a>
+                      {service.price && (
+                        <div className="flex items-center gap-2">
+                          <DollarSign className="text-primary" size={20} />
+                          <span className="font-heading text-xl font-bold text-primary">
+                            ${service.price}
+                          </span>
                         </div>
                       )}
                     </div>
-                  </motion.div>
-                );
-              })}
+                  </div>
+                </motion.div>
+              ))}
             </div>
           )}
         </div>
