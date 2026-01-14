@@ -341,7 +341,7 @@ export default function HomePage() {
                  {/* Family photo with pets and owners */}
                  <div className="absolute inset-0">
                     <Image 
-                      src="https://static.wixstatic.com/media/773a78_9e0a156fb79d4f34a113c5246022182f~mv2.png" 
+                      src="https://static.wixstatic.com/media/773a78_497ae77c1f8242d496e08bfc6db790fe~mv2.png" 
                       alt="Familia Milicotas con mascotas y sus dueños" 
                       width={600}
                       className="w-full h-full object-cover"
