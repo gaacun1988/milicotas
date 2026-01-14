@@ -9,10 +9,10 @@ export default function Footer() {
           {/* Logo and Description */}
           <div className="flex flex-col gap-4">
             <Image
-              src="https://static.wixstatic.com/media/773a78_e14d50bae37446aba21f313153928516~mv2.png"
+              src="https://static.wixstatic.com/media/773a78_2c473bcf8519408fa410f29884f19296~mv2.png"
               alt="Milicotas Logo"
-              width={140}
-              className="h-20 w-auto object-contain brightness-0 invert"
+              width={180}
+              className="h-24 w-auto object-contain"
             />
             <p className="font-paragraph text-base text-gray-300">
               Tu clínica veterinaria de confianza. Atención personalizada y profesional para tus mascotas.

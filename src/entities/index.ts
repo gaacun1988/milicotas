@@ -15,7 +15,7 @@ export interface ServiciosVeterinarios {
   serviceName?: string;
   /** @wixFieldType text */
   description?: string;
-  /** @wixFieldType image */
+  /** @wixFieldType image - Contains image URL, render with <Image> component, NOT as text */
   serviceImage?: string;
   /** @wixFieldType number */
   price?: number;

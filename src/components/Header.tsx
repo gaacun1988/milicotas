@@ -22,10 +22,10 @@ export default function Header() {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center">
             <Image
-              src="https://static.wixstatic.com/media/773a78_e14d50bae37446aba21f313153928516~mv2.png"
+              src="https://static.wixstatic.com/media/773a78_2c473bcf8519408fa410f29884f19296~mv2.png"
               alt="Milicotas Logo"
-              width={120}
-              className="h-16 w-auto object-contain"
+              width={180}
+              className="h-20 w-auto object-contain"
             />
           </Link>
 
